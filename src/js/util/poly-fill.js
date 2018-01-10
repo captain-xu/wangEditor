@@ -11,13 +11,13 @@ export default function () {
                 throw new TypeError('Cannot convert undefined or null to object')
             }
 
-            var to = Object(target)
+            let to = Object(target)
 
-            for (var index = 1; index < arguments.length; index++) {
-                var nextSource = arguments[index]
+            for (let index = 1; index < arguments.length; index++) {
+                let nextSource = arguments[index]
 
                 if (nextSource != null) { // Skip over if undefined or null
-                    for (var nextKey in nextSource) {
+                    for (let nextKey in nextSource) {
                         // Avoid bugs when hasOwnProperty is shadowed
                         if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
                             to[nextKey] = nextSource[nextKey]
@@ -38,7 +38,7 @@ export default function () {
             Element.prototype.oMatchesSelector || 
             Element.prototype.webkitMatchesSelector ||
             function(s) {
-                var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                let matches = (this.document || this.ownerDocument).querySelectorAll(s),
                     i = matches.length;
                 while (--i >= 0 && matches.item(i) !== this) {}
                 return i > -1;            
